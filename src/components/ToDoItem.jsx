@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 
 const ToDoItem = ({ task, onToggle, onDelete }) => {
   return (
@@ -14,6 +14,15 @@ const ToDoItem = ({ task, onToggle, onDelete }) => {
       </button>
     </div>
   );
+};
+
+ToDoItem.propTypes = {
+  task: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ToDoItem;

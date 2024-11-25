@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ToDoItem from "./ToDoItem";
 
 const ToDoList = ({ tasks, onToggleTask, onDeleteTask }) => {
@@ -13,6 +14,17 @@ const ToDoList = ({ tasks, onToggleTask, onDeleteTask }) => {
       ))}
     </div>
   );
+};
+
+ToDoList.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onToggleTask: PropTypes.func.isRequired,
+  onDeleteTask: PropTypes.func.isRequired,
 };
 
 export default ToDoList;

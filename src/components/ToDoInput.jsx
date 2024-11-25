@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const ToDoInput = ({ addTask }) => {
   const [task, setTask] = useState("");
@@ -28,6 +28,10 @@ const ToDoInput = ({ addTask }) => {
       </button>
     </div>
   );
+};
+
+ToDoInput.propTypes = {
+  addTask: PropTypes.func.isRequired,
 };
 
 export default ToDoInput;
