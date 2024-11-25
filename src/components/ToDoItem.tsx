@@ -1,6 +1,17 @@
-import PropTypes from "prop-types";
+import React from "react";
 
-const ToDoItem = ({ task, onToggle, onDelete }) => {
+interface Task {
+  text: string;
+  completed: boolean;
+}
+
+interface ToDoItemProps {
+  task: Task;
+  onToggle: () => void;
+  onDelete: () => void;
+}
+
+const ToDoItem = ({ task, onToggle, onDelete }: ToDoItemProps) => {
   return (
     <div className="flex items-center justify-between mb-2">
       <div
@@ -14,15 +25,6 @@ const ToDoItem = ({ task, onToggle, onDelete }) => {
       </button>
     </div>
   );
-};
-
-ToDoItem.propTypes = {
-  task: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired,
-  }).isRequired,
-  onToggle: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default ToDoItem;
