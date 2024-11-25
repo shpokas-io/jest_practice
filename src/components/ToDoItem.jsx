@@ -1,31 +1,19 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 
-const ToDoInput = () => {
-  const [task, setTask] = useState("");
-
-  const handleAddTask = () => {
-    if (task.trim()) {
-      setTask("");
-    }
-  };
-
+const ToDoItem = ({ task, onToggle, onDelete }) => {
   return (
-    <div className="mb-4">
-      <input
-        type="text"
-        className="w-full p-2 border border-gray-300 rounded mb-2"
-        placeholder="Add a new task"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-      />
-      <button
-        className="w-full bg-blue-500 text-white p-2 rounded"
-        onClick={handleAddTask}
+    <div className="flex items-center justify-between mb-2">
+      <div
+        className={`flex-1 ${task.completed ? "line-through" : ""}`}
+        onClick={onToggle}
       >
-        Add Task
+        {task.text}
+      </div>
+      <button className="bg-red-500 text-white p-1 rounded" onClick={onDelete}>
+        Delete
       </button>
     </div>
   );
 };
 
-export default ToDoInput;
+export default ToDoItem;

@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const ToDoInput = () => {
+const ToDoInput = ({ addTask }) => {
   const [task, setTask] = useState("");
 
   const handleAddTask = () => {
     if (task.trim()) {
+      addTask(task);
       setTask("");
     }
   };
